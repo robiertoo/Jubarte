@@ -1,24 +1,24 @@
 <?php 
-	class Historia
-	{
+class Historia
+{
 
-		private $props = [];
+	private $props = [];
 		// nome aqui significa o nome que está na propriedade!
-		public function __get($nome)
+	public function __get($nome)
+	{
+		if(isset($this->props[strtolower($nome)]))
 		{
-			if(isset($this->props[strtolower($nome)]))
-			{
-				return $this->props[strtolower($nome)];
-			}
-			else
-			{
-				return false;
-			}
+			return $this->props[strtolower($nome)];
 		}
-
-		public function __set($nome, $valor)
+		else
 		{
-			$this->props[strtolower($nome)] = $valor;
-		}		
+			return false;
+		}
 	}
+
+	public function __set($nome, $valor)
+	{
+		$this->props[strtolower($nome)] = $valor;
+	}		
+}
 ?>
